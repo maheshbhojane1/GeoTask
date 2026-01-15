@@ -1,26 +1,23 @@
 import { useState, useEffect, useRef } from "react";
 import { calculateDistance } from "../utils/calculateDistance";
-import { onAuthStateChanged } from "firebase/auth";
+import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth, db } from "../services/firebase";
 import { useNavigate, Link } from "react-router-dom";
-import {
-  doc,
-  getDoc,
-  deleteDoc,
-  collection,
-  addDoc,
-} from "firebase/firestore";
+import { doc, getDoc, deleteDoc, collection, addDoc } from "firebase/firestore";
 
 export default function Dashboard() {
   const [task, setTask] = useState(null);
   const [currentDistance, setCurrentDistance] = useState(null);
+  const [showMenu, setShowMenu] = useState(false);
   const hasTriggered = useRef(false);
   const navigate = useNavigate();
 
   /* 🔐 AUTH PROTECTION */
   useEffect(() => {
     const unsub = onAuthStateChanged(auth, (user) => {
-      if (!user) navigate("/");
+      if (!user) {
+        navigate("/", { replace: true }); // ⛔ block back button
+      }
     });
     return () => unsub();
   }, [navigate]);
@@ -47,6 +44,12 @@ export default function Dashboard() {
     loadTask();
   }, []);
 
+  /* 🔓 LOGOUT HANDLER */
+  const handleLogout = async () => {
+    await signOut(auth);
+    navigate("/", { replace: true }); // ⛔ prevents back navigation
+  };
+
   /* 🔔 SHOW NOTIFICATION */
   const showNotification = (title, body) => {
     if (Notification.permission === "granted") {
@@ -54,7 +57,7 @@ export default function Dashboard() {
     }
   };
 
-  /* 📤 MOVE TASK TO HISTORY (FIRESTORE) */
+  /* 📤 MOVE TASK TO HISTORY */
   const moveTaskToHistory = async (completedTask) => {
     const user = auth.currentUser;
     if (!user) return;
@@ -75,11 +78,6 @@ export default function Dashboard() {
   /* 📍 LOCATION TRACKING */
   useEffect(() => {
     if (!task) return;
-
-    if (!navigator.geolocation) {
-      alert("Geolocation not supported");
-      return;
-    }
 
     const watchId = navigator.geolocation.watchPosition(
       (pos) => {
@@ -123,50 +121,85 @@ export default function Dashboard() {
   }, [task]);
 
   return (
-    <div className="container">
-      <div className="card">
-        <h1>GeoTask Dashboard</h1>
+    <>
+      <header class="navbar">
+        <div class="logo">GeoTask</div>
 
-        <div style={{ display: "flex", gap: "10px" }}>
-          <Link className="btn" to="/add-task">
-            + Add Task
-          </Link>
+        <div className="user-menu">
           <Link className="btn" to="/history">
-            View History
+            History
           </Link>
+          <img
+            src={auth.currentUser?.photoURL || "/user.png"}
+            alt="User"
+            className="avatar"
+            onClick={() => setShowMenu(!showMenu)}
+          />
+
+          {showMenu && (
+            <div className="dropdown">
+              <button onClick={handleLogout}>Logout</button>
+            </div>
+          )}
         </div>
+      </header>
 
-        <br />
+      <div className="container">
+        <div className="card">
+          <section class="page-header">
+            <h1>Current Active Task</h1>
+            <button class="primary-btn btn"><Link className="btn" to="/add-task">
+              Add New Task
+            </Link></button>
+          </section>
 
-        {task ? (
-          <>
-            <p>
-              <strong>Task:</strong> {task.title}
-            </p>
-            <p>
-              <strong>Trigger Distance:</strong> {task.distance} m
-            </p>
+          {/* <section class="header">
+            <h1>Current Active Task</h1>
+            <button class="primary-btn btn"><Link className="btn" to="/add-task">
+              Add Task
+            </Link></button>
+            
+          </section> */}
 
-            {currentDistance !== null && (
+          <div className="task-card">
+            <div class="task-top">
+              <div>
+                <span class="badge">TRACKING ACTIVE</span>
+                <h2>Buy Groceries</h2>
+                <p class="location">Whole Foods Market, Downtown</p>
+              </div>
+            </div>
+          </div>
+
+          <br />
+
+          {task ? (
+            <>
               <p>
-                <strong>Current Distance:</strong>{" "}
-                {currentDistance.toFixed(2)} m
+                <strong>Task:</strong> {task.title}
               </p>
-            )}
+              <p>
+                <strong>Trigger Distance:</strong> {task.distance} m
+              </p>
 
-            <br />
+              {currentDistance !== null && (
+                <p>
+                  <strong>Current Distance:</strong>{" "}
+                  {currentDistance.toFixed(2)} m
+                </p>
+              )}
 
-            <button
-              className="btn"
-              onClick={() => moveTaskToHistory(task)}
-            >
-              Mark as Completed
-            </button>
-          </>
-        ) : (
-          <p>No active task</p>
-        )}
+              <br />
+
+              <button className="btn" onClick={() => moveTaskToHistory(task)}>
+                Mark as Completed
+              </button>
+            </>
+          ) : (
+            <p>No active task</p>
+          )}
+        </div>
       </div>
-    </div>
+    </>
   );
 }
