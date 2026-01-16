@@ -143,31 +143,41 @@ export default function Dashboard() {
           )}
         </div>
       </header>
-
-      <div className="container">
-        <div className="card">
-          <section class="page-header">
-            <h1>Current Active Task</h1>
-            <button class="primary-btn btn"><Link className="btn" to="/add-task">
-              Add New Task
-            </Link></button>
-          </section>
-
-          {/* <section class="header">
-            <h1>Current Active Task</h1>
-            <button class="primary-btn btn"><Link className="btn" to="/add-task">
+      <main className="container">
+        <section class="page-header">
+          <h1>Current Active Task</h1>
+          <button class="primary-btn">
+            <Link className="btn" to="/add-task">
               Add Task
-            </Link></button>
-            
-          </section> */}
+            </Link>
+          </button>
+        </section>
 
-          <div className="task-card">
-            <div class="task-top">
-              <div>
-                <span class="badge">TRACKING ACTIVE</span>
-                <h2>Buy Groceries</h2>
-                <p class="location">Whole Foods Market, Downtown</p>
-              </div>
+        <section className="task-card">
+          <div className="task-top">
+            <div>
+              <span className="badge">TRACKING ACTIVE</span>
+              <p>
+                {/* <h3> {task.title}</h3> */}
+              </p>
+            </div>
+
+            <span className="status">● Active Monitoring</span>
+          </div>
+
+          <div class="distance-box">
+            <div>
+              <p>Trigger Distance</p>
+              <h3>
+                200 <span>meters</span>
+              </h3>
+            </div>
+
+            <div>
+              <p>Current Distance</p>
+              <h3 class="blue">
+                450 <span>meters</span>
+              </h3>
             </div>
           </div>
 
@@ -198,8 +208,8 @@ export default function Dashboard() {
           ) : (
             <p>No active task</p>
           )}
-        </div>
-      </div>
+        </section>
+      </main>
     </>
   );
 }

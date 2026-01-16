@@ -36,71 +36,30 @@ export default function AddTask() {
   };
 
   return (
+    <div className="container">
+      <div className="card">
+        <h2>Add Task</h2>
 
-  
-    // <div className="container">
-    //   <div className="card">
-    //     <h2>Add Task</h2>
-
-    //     <input
-    //       placeholder="Task title"
-    //       value={title}
-    //       onChange={(e) => setTitle(e.target.value)}
-    //     />
-
-    //     <input
-    //       type="number"
-    //       value={distance}
-    //       onChange={(e) => setDistance(e.target.value)}
-    //     />
-
-    //     <button className="btn" onClick={getLocation}>
-    //       Capture Location
-    //     </button>
-
-    //     <button className="btn" onClick={handleSubmit}>
-    //       Save Task
-    //     </button>
-    //   </div>
-    // </div>
-
-    <>
-    
-    <header class="topbar">
-    <h2>GeoTask</h2>
-    <img src="https://i.pravatar.cc/40" alt="profile" />
-  </header>
-
-  <main class="page">
-    <div class="card">
-      <h1>New Reminder</h1>
-      <p class="subtitle">Set a location trigger for your task</p>
-
-      <form>
-        <label>Task Title</label>
-        <input placeholder="Task title"
+        <input
+          placeholder="Task title"
           value={title}
-          onChange={(e) => setTitle(e.target.value)} />
+          onChange={(e) => setTitle(e.target.value)}
+        />
 
-        <label>Trigger Distance</label>
-        <div class="input-group">
-          <input type="number" value="200" />
-          <span>meters</span>
-        </div>
+        <input
+          type="number"
+          value={distance}
+          onChange={(e) => setDistance(e.target.value)}
+        />
 
-        <div class="location-row">
-          <label>Location</label>
-          <a  onClick={getLocation}>Recapture Location</a>
-        </div>
+        <button className="btn" onClick={getLocation}>
+          Capture Location
+        </button>
 
-        
-        <div class="actions">
-          <button type="button" class="btn cancel">Cancel</button>
-          <button className="btn primary" onClick={handleSubmit} >Save Task</button>
-        </div>
-      </form>
+        <button className="btn" onClick={handleSubmit}>
+          Save Task
+        </button>
+      </div>
     </div>
-  </main>
-    </>
   );
 }
