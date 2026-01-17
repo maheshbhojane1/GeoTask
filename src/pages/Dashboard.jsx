@@ -12,24 +12,21 @@ export default function Dashboard() {
   const hasTriggered = useRef(false);
   const navigate = useNavigate();
 
-  /* 🔐 AUTH PROTECTION */
   useEffect(() => {
     const unsub = onAuthStateChanged(auth, (user) => {
       if (!user) {
-        navigate("/", { replace: true }); // ⛔ block back button
+        navigate("/", { replace: true });  button
       }
     });
     return () => unsub();
   }, [navigate]);
 
-  /* 🔔 REQUEST NOTIFICATION PERMISSION */
   useEffect(() => {
     if ("Notification" in window && Notification.permission === "default") {
       Notification.requestPermission();
     }
   }, []);
 
-  /* 📦 LOAD ACTIVE TASK FROM FIRESTORE */
   useEffect(() => {
     const loadTask = async () => {
       const user = auth.currentUser;
@@ -44,20 +41,17 @@ export default function Dashboard() {
     loadTask();
   }, []);
 
-  /* 🔓 LOGOUT HANDLER */
   const handleLogout = async () => {
     await signOut(auth);
-    navigate("/", { replace: true }); // ⛔ prevents back navigation
+    navigate("/", { replace: true }); 
   };
 
-  /* 🔔 SHOW NOTIFICATION */
   const showNotification = (title, body) => {
     if (Notification.permission === "granted") {
       new Notification(title, { body });
     }
   };
 
-  /* 📤 MOVE TASK TO HISTORY */
   const moveTaskToHistory = async (completedTask) => {
     const user = auth.currentUser;
     if (!user) return;
@@ -75,7 +69,6 @@ export default function Dashboard() {
     hasTriggered.current = false;
   };
 
-  /* 📍 LOCATION TRACKING */
   useEffect(() => {
     if (!task) return;
 
@@ -122,8 +115,8 @@ export default function Dashboard() {
 
   return (
     <>
-      <header class="navbar">
-        <div class="logo">GeoTask</div>
+      <header className="navbar">
+        <div className="logo">GeoTask</div>
 
         <div className="user-menu">
           <Link className="btn" to="/history">
@@ -213,3 +206,4 @@ export default function Dashboard() {
     </>
   );
 }
+

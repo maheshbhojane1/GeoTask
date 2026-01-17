@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { auth } from "../services/firebase";
 import { db } from "../services/firebase";
 import { doc, setDoc } from "firebase/firestore";
+import { Link } from "react-router-dom";
+
 
 export default function AddTask() {
   const [title, setTitle] = useState("");
@@ -36,30 +38,51 @@ export default function AddTask() {
   };
 
   return (
-    <div className="container">
-      <div className="card">
-        <h2>Add Task</h2>
+    <>
+      <header className="navbar">
+        <div className="logo">GeoTask</div>
 
-        <input
-          placeholder="Task title"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-        />
+        <div className="user-menu">
+          <Link className="btn" to="/dashboard">
+            Dashboard
+          </Link>
+          <Link className="btn" to="/history">
+            History
+          </Link>
+        </div>
+      </header>
+      <div className="task-container">
+        <div className="task-card">
+          <h2>Add Task</h2>
+          <p className="task-subtitle">Set a location trigger for your task</p>
 
-        <input
-          type="number"
-          value={distance}
-          onChange={(e) => setDistance(e.target.value)}
-        />
+          <form>
+            <label>Task Title</label>
+            <input
+              placeholder="Buy groceries"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+            />
 
-        <button className="btn" onClick={getLocation}>
-          Capture Location
-        </button>
 
-        <button className="btn" onClick={handleSubmit}>
-          Save Task
-        </button>
+            <label>Trigger Distance</label>
+            <div class="input-group">
+              <input type="number" 
+              onChange={(e) => setDistance(e.target.value)} placeholder="100" />
+              <span>meters</span>
+            </div>
+
+            <div class="actions">
+              <button type="button" class="btn location" onClick={getLocation}>
+                Location
+              </button>
+              <button type="submit" class="btn primary" onClick={handleSubmit}>
+                Save Task
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
-    </div>
+    </>
   );
 }

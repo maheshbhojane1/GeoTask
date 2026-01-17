@@ -14,7 +14,6 @@ export default function History() {
   const [history, setHistory] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  /* 📦 LOAD HISTORY FROM FIRESTORE */
   useEffect(() => {
     const fetchHistory = async () => {
       const user = auth.currentUser;
@@ -22,7 +21,7 @@ export default function History() {
 
       const q = query(
         collection(db, "taskHistory"),
-        where("userId", "==", user.uid)
+        where("userId", "==", user.uid),
       );
 
       const snapshot = await getDocs(q);
@@ -38,7 +37,6 @@ export default function History() {
     fetchHistory();
   }, []);
 
-  /* ❌ DELETE SINGLE HISTORY ITEM */
   const deleteHistoryItem = async (id) => {
     if (!window.confirm("Delete this history item?")) return;
 
@@ -47,43 +45,48 @@ export default function History() {
   };
 
   return (
-    <div className="container">
-      <div className="card">
-        <h1>Task History</h1>
+    <>
+      <header className="navbar">
+        <div className="logo">GeoTask</div>
+      </header>
+      <div className="history-container">
+        <div className="history-header">
+          <h1>Task History</h1>
 
-        <Link className="btn" to="/dashboard">
-          ← Back to Dashboard
-        </Link>
+          <Link className="back-btn" to="/dashboard">
+            Back
+          </Link>
+        </div>
 
-        <br /><br />
+        <br />
+        <br />
 
         {loading ? (
-          <p>Loading...</p>
+          <p style={{textAlign:'center'}}>Loading...</p>
         ) : history.length === 0 ? (
           <p>No completed tasks yet</p>
         ) : (
-          <ul>
+          <section className="history-card">
             {history.map((task) => (
-              <li key={task.id} style={{ marginBottom: "15px" }}>
-                <strong>{task.title}</strong>
-                <br />
-                <small>
-                  Completed on:{" "}
-                  {task.completedAt.toDate().toLocaleString()}
-                </small>
-                <br />
-                <button
-                  className="btn"
-                  style={{ marginTop: "5px" }}
+              <div className="history-item" key={task.id}>
+                <div>
+                  <h3>{task.title}</h3>
+                  <p>
+                    Completed on {task.completedAt.toDate().toLocaleString()}
+                  </p>
+                </div>
+
+                <span
+                  className="delete"
                   onClick={() => deleteHistoryItem(task.id)}
                 >
                   Delete
-                </button>
-              </li>
+                </span>
+              </div>
             ))}
-          </ul>
+          </section>
         )}
       </div>
-    </div>
+    </>
   );
 }
