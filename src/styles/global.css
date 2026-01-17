@@ -301,6 +301,7 @@ input:focus {
 }
 
 .page-header {
+  width: 38%;
   display: flex;
   justify-content: space-between;
   align-items: center;
