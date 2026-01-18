@@ -152,53 +152,21 @@ export default function Dashboard() {
 
         <section className="task-card">
           <div className="task-top">
-            <div>
-              <span className="badge">TRACKING ACTIVE</span>
-              <p>{/* <h3> {task.title}</h3> */}</p>
-            </div>
-
-            <span className="status">● Active Monitoring</span>
-          </div>
+                <div>
+                  <span className="badge">TRACKING ACTIVE</span>
+                  <h3>{task.title}</h3>
+                </div>
+                  <span className="status">Active Monitoring</span>
+              </div>
 
           <br />
 
-          {/* {task ? (
-            <>
-              <p>
-                <strong>Task:</strong> {task.title}
-              </p>
-              <p>
-                <strong>Trigger Distance:</strong> {task.distance} m
-              </p>
 
-              {currentDistance !== null && (
-                <p>
-                  <strong>Current Distance:</strong>{" "}
-                  {currentDistance.toFixed(2)} m
-                </p>
-              )}
+        </section>
 
-              <br />
-
-              <button className="btn" onClick={() => moveTaskToHistory(task)}>
-                Mark as Completed
-              </button>
-            </>
-          ) 
-          : (
-            <p>No active task</p>
-          )} */}
-
-          {task ? (
+        
+      {task ? (
             <section className="task-card">
-              <div className="task-top">
-                <div>
-                  <span className="badge">TRACKING ACTIVE</span>
-
-                  <span className="status">TRACKING ACTIVE</span>
-                  <h3>{task.title}</h3>
-                </div>
-              </div>
 
               <div className="distance-box">
                 <div>
@@ -227,8 +195,8 @@ export default function Dashboard() {
           ) : (
             <p>No active task</p>
           )}
-        </section>
       </main>
+
     </>
   );
 }
