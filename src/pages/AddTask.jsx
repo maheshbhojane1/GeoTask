@@ -67,7 +67,7 @@ export default function AddTask() {
 
             <label>Trigger Distance</label>
             <div class="input-group">
-              <input type="number" 
+              <input type="number" required='true'
               onChange={(e) => setDistance(e.target.value)} placeholder="100" />
               <span>meters</span>
             </div>

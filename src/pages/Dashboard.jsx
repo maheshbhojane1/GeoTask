@@ -15,7 +15,8 @@ export default function Dashboard() {
   useEffect(() => {
     const unsub = onAuthStateChanged(auth, (user) => {
       if (!user) {
-        navigate("/", { replace: true });  button
+        navigate("/", { replace: true });
+        button;
       }
     });
     return () => unsub();
@@ -43,7 +44,7 @@ export default function Dashboard() {
 
   const handleLogout = async () => {
     await signOut(auth);
-    navigate("/", { replace: true }); 
+    navigate("/", { replace: true });
   };
 
   const showNotification = (title, body) => {
@@ -80,7 +81,7 @@ export default function Dashboard() {
           task.location.lat,
           task.location.lng,
           pos.coords.latitude,
-          pos.coords.longitude
+          pos.coords.longitude,
         );
 
         setCurrentDistance(distance);
@@ -90,12 +91,15 @@ export default function Dashboard() {
 
           showNotification(
             "GeoTask Reminder 🔔",
-            `Don't forget: ${task.title}`
+            `Don't forget: ${task.title}`,
+          );
+          const confirmComplete = window.confirm(
+            `Mark "${task.title}" as completed?`,
           );
 
-          const confirmComplete = window.confirm(
-            `Mark "${task.title}" as completed?`
-          );
+          setInterval(() => {
+            window.location.reload();
+          }, 5000);
 
           if (confirmComplete) {
             moveTaskToHistory(task);
@@ -107,7 +111,7 @@ export default function Dashboard() {
         }
       },
       () => alert("Location permission denied"),
-      { enableHighAccuracy: true }
+      { enableHighAccuracy: true },
     );
 
     return () => navigator.geolocation.clearWatch(watchId);
@@ -137,9 +141,9 @@ export default function Dashboard() {
         </div>
       </header>
       <main className="container">
-        <section class="page-header">
+        <section className="page-header">
           <h1>Current Active Task</h1>
-          <button class="primary-btn">
+          <button className="primary-btn">
             <Link className="btn" to="/add-task">
               Add Task
             </Link>
@@ -150,33 +154,15 @@ export default function Dashboard() {
           <div className="task-top">
             <div>
               <span className="badge">TRACKING ACTIVE</span>
-              <p>
-                {/* <h3> {task.title}</h3> */}
-              </p>
+              <p>{/* <h3> {task.title}</h3> */}</p>
             </div>
 
             <span className="status">● Active Monitoring</span>
           </div>
 
-          <div class="distance-box">
-            <div>
-              <p>Trigger Distance</p>
-              <h3>
-                200 <span>meters</span>
-              </h3>
-            </div>
-
-            <div>
-              <p>Current Distance</p>
-              <h3 class="blue">
-                450 <span>meters</span>
-              </h3>
-            </div>
-          </div>
-
           <br />
 
-          {task ? (
+          {/* {task ? (
             <>
               <p>
                 <strong>Task:</strong> {task.title}
@@ -198,6 +184,46 @@ export default function Dashboard() {
                 Mark as Completed
               </button>
             </>
+          ) 
+          : (
+            <p>No active task</p>
+          )} */}
+
+          {task ? (
+            <section className="task-card">
+              <div className="task-top">
+                <div>
+                  <span className="badge">TRACKING ACTIVE</span>
+
+                  <span className="status">TRACKING ACTIVE</span>
+                  <h3>{task.title}</h3>
+                </div>
+              </div>
+
+              <div className="distance-box">
+                <div>
+                  <p>Trigger Distance</p>
+                  <h3>
+                    {task.distance} <span>meters</span>
+                  </h3>
+                </div>
+
+                {currentDistance !== null && (
+                  <div>
+                    <p>Current Distance</p>
+                    <h3 className="blue">
+                      {currentDistance.toFixed(2)} <span>meters</span>
+                    </h3>
+                  </div>
+                )}
+              </div>
+
+              <br />
+
+              <button className="btn" onClick={() => moveTaskToHistory(task)}>
+                Mark as Completed
+              </button>
+            </section>
           ) : (
             <p>No active task</p>
           )}
@@ -206,4 +232,3 @@ export default function Dashboard() {
     </>
   );
 }
-
