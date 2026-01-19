@@ -127,7 +127,8 @@ body {
   border: 1px solid #ccc;
   border-radius: 6px;
 }
-*/ .topbar {
+
+.topbar {
   background: #f8fafc;
   height: 60px;
   padding: 0 30px;
