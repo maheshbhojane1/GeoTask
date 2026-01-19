@@ -38,7 +38,15 @@ body {
   border: 1px solid #ddd;
   padding: 8px;
 }
-
+.dash-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  max-width: 1100px;
+  margin: 40px auto;
+  padding: 0 20px;
+  text-align: center;
+}
 .container {
   max-width: 1100px;
   margin: 40px auto;
@@ -60,8 +68,10 @@ body {
   justify-content: center;
 }
 
-.logo {
+.login-logo {
   text-align: center;
+  /* position: relative;
+  bottom: 48px; */
 }
 
 .logo-icon {
@@ -82,7 +92,10 @@ body {
   font-weight: 700;
 }
 
-.card {
+.login-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 100%;
   max-width: 400px;
   background: #fff;
@@ -98,13 +111,15 @@ body {
   font-weight: 500;
 }
 
+.login-head {
+  margin-bottom: 8px;
+}
 .subtitle {
   text-align: center;
   color: #64748b;
-  margin-bottom: 24px;
+  margin-bottom: 38px;
   font-size: 13px;
 }
-
 
 .input {
   width: 100%;
@@ -307,6 +322,17 @@ input:focus {
   margin-bottom: 32px;
 }
 
+.add-btn {
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  background: #1677ff;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  color: #fff;
+}
+
 .primary-btn {
   background: #1677ff;
   color: white;
@@ -315,13 +341,6 @@ input:focus {
   border-radius: 8px;
   font-weight: 600;
   cursor: pointer;
-}
-
-.task-card {
-  background: white;
-  border-radius: 14px;
-  padding: 28px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
 }
 
 .task-top {
@@ -372,7 +391,8 @@ input:focus {
 }
 
 .history-container {
-  max-width: 1000px;
+  /* max-width: 1000px; */
+  width: 500px;
   margin: 40px auto;
   padding: 0 20px;
 }
@@ -382,6 +402,14 @@ input:focus {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 28px;
+}
+
+.historyAdd-btn {
+  padding: 10px 16px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  color: #000;
 }
 
 h1 {
@@ -474,7 +502,7 @@ h1 {
   max-width: 420px;
   padding: 32px;
   border-radius: 14px;
-  box-shadow: 0 14px 30px rgba(0,0,0,0.08);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.08);
 }
 
 .task-subtitle {

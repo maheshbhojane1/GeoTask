@@ -62,13 +62,14 @@ export default function AddTask() {
               placeholder="Buy groceries"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
+              required 
             />
 
 
             <label>Trigger Distance</label>
             <div class="input-group">
-              <input type="number" required='true'
-              onChange={(e) => setDistance(e.target.value)} placeholder="100" />
+              <input type="number"
+              onChange={(e) => setDistance(e.target.value)} placeholder="100" required/>
               <span>meters</span>
             </div>
 

@@ -140,63 +140,53 @@ export default function Dashboard() {
           )}
         </div>
       </header>
-      <main className="container">
+      <main className="dash-container">
         <section className="page-header">
           <h1>Current Active Task</h1>
-          <button className="primary-btn">
-            <Link className="btn" to="/add-task">
+            <Link className="add-btn" to="/add-task">
               Add Task
             </Link>
-          </button>
         </section>
 
-        <section className="task-card">
-          <div className="task-top">
-                <div>
-                  <span className="badge">TRACKING ACTIVE</span>
-                  <h3>{task.title}</h3>
-                </div>
-                  <span className="status">Active Monitoring</span>
+        {task ? (
+          
+          <section className="task-card">
+            <div className="task-top">
+            <div>
+              <span className="badge">TRACKING ACTIVE</span>
+              <h3>{task.title}</h3>
+            </div>
+            <span className="status">Active Monitoring</span>
+          </div>
+          <br />
+            <div className="distance-box">
+              <div>
+                <p>Trigger Distance</p>
+                <h3>
+                  {task.distance} <span>meters</span>
+                </h3>
               </div>
 
-          <br />
-
-
-        </section>
-
-        
-      {task ? (
-            <section className="task-card">
-
-              <div className="distance-box">
+              {currentDistance !== null && (
                 <div>
-                  <p>Trigger Distance</p>
-                  <h3>
-                    {task.distance} <span>meters</span>
+                  <p>Current Distance</p>
+                  <h3 className="blue">
+                    {currentDistance.toFixed(2)} <span>meters</span>
                   </h3>
                 </div>
+              )}
+            </div>
 
-                {currentDistance !== null && (
-                  <div>
-                    <p>Current Distance</p>
-                    <h3 className="blue">
-                      {currentDistance.toFixed(2)} <span>meters</span>
-                    </h3>
-                  </div>
-                )}
-              </div>
+            <br />
 
-              <br />
-
-              <button className="btn" onClick={() => moveTaskToHistory(task)}>
-                Mark as Completed
-              </button>
-            </section>
-          ) : (
-            <p>No active task</p>
-          )}
+            <button className="btn" onClick={() => moveTaskToHistory(task)}>
+              Mark as Completed
+            </button>
+          </section>
+        ) : (
+          <p>No active task</p>
+        )}
       </main>
-
     </>
   );
 }
