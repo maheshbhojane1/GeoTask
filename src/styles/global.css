@@ -360,11 +360,13 @@ input:focus {
 }
 
 .status {
-  background: #e0ecff;
-  color: #2563eb;
-  padding: 6px 14px;
-  border-radius: 20px;
-  font-size: 14px;
+     background: #e0ecff;
+    color: #2563eb;
+    padding: 6px 9px;
+    border-radius: 20px;
+    font-size: 14px;
+    height: 34px;
+    width: 140px;
 }
 
 .distance-box {
