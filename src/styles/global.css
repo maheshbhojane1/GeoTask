@@ -368,6 +368,7 @@ input:focus {
     font-size: 14px;
     height: 34px;
     width: 140px;
+    font-weight: 600;
 }
 
 .distance-box {
