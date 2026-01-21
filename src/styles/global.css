@@ -535,3 +535,134 @@ input:focus {
   border-color: #1677ff;
   background: white;
 }
+
+
+/* =========================
+   TABLET (max-width: 768px)
+========================= */
+@media (max-width: 768px) {
+
+  .navbar,
+  .topbar {
+    padding: 12px 16px;
+  }
+
+  .user-menu a {
+    margin: 0 8px;
+    font-size: 14px;
+  }
+
+  .page-header {
+    width: 100%;
+    flex-direction: column;
+    gap: 14px;
+    align-items: flex-start;
+  }
+
+  .distance-box {
+    flex-direction: column;
+    gap: 12px;
+    text-align: left;
+  }
+
+  .actions {
+    flex-direction: column;
+  }
+
+  .history-container {
+    width: 100%;
+  }
+}
+
+
+/* =========================
+   MOBILE (max-width: 480px)
+========================= */
+@media (max-width: 480px) {
+
+  body {
+    font-size: 14px;
+  }
+
+  .container,
+  .dash-container {
+    margin: 20px auto;
+    padding: 0 14px;
+  }
+
+  .login-card,
+  .card,
+  .task-card {
+    padding: 22px;
+    border-radius: 12px;
+  }
+
+  .logo h1 {
+    font-size: 18px;
+  }
+
+  .subtitle {
+    font-size: 12px;
+    margin-bottom: 24px;
+  }
+
+  .navbar {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .user-menu {
+    gap: 8px;
+  }
+
+  .user-menu a {
+    font-size: 13px;
+  }
+
+  .task-top {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .status {
+    width: auto;
+    text-align: center;
+    font-size: 13px;
+  }
+
+  .map-box {
+    padding: 18px;
+  }
+
+  .map-icon {
+    font-size: 34px;
+  }
+
+  .map-footer {
+    flex-direction: column;
+    gap: 6px;
+    font-size: 13px;
+  }
+
+  .history-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .delete {
+    width: 100%;
+    text-align: center;
+  }
+
+  .btn,
+  .primary-btn,
+  .add-btn,
+  .back-btn {
+    width: 100%;
+  }
+
+  input {
+    padding: 10px;
+  }
+}
