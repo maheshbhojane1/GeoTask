@@ -179,7 +179,7 @@ export default function Dashboard() {
 
             <br />
 
-            <button className="btn" onClick={() => moveTaskToHistory(task)}>
+            <button className="mark-btn" onClick={() => moveTaskToHistory(task)}>
               Mark as Completed
             </button>
           </section>

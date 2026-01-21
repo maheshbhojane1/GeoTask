@@ -121,6 +121,17 @@ body {
   font-size: 13px;
 }
 
+.mark-btn{
+  padding: 10px 16px;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+    background: #1677ff;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    color: #fff;
+}
+
 .input {
   width: 100%;
   padding: 10px;
@@ -554,13 +565,17 @@ input:focus {
 
   .page-header {
     width: 100%;
-    flex-direction: column;
+    /* flex-direction: column; */
     gap: 14px;
-    align-items: flex-start;
+    align-items: center;
+  }
+
+  .page-header h1 {
+    font-size: 15px;
   }
 
   .distance-box {
-    flex-direction: column;
+    /* flex-direction: column; */
     gap: 12px;
     text-align: left;
   }
@@ -607,7 +622,7 @@ input:focus {
   }
 
   .navbar {
-    flex-direction: column;
+    /* flex-direction: column; */
     gap: 12px;
   }
 
@@ -624,10 +639,13 @@ input:focus {
     gap: 10px;
   }
 
+
+
   .status {
     width: auto;
     text-align: center;
     font-size: 13px;
+    background: none;
   }
 
   .map-box {
@@ -656,10 +674,14 @@ input:focus {
   }
 
   .btn,
-  .primary-btn,
-  .add-btn,
-  .back-btn {
+  .primary-btn {
     width: 100%;
+  }
+
+  .add-btn {
+            width: 25%;
+        font-size: 12px;
+    
   }
 
   input {
