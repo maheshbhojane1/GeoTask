@@ -4,6 +4,7 @@ import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth, db } from "../services/firebase";
 import { useNavigate, Link } from "react-router-dom";
 import { doc, getDoc, deleteDoc, collection, addDoc } from "firebase/firestore";
+import { toast } from 'react-toastify';
 
 export default function Dashboard() {
   const [task, setTask] = useState(null);
@@ -103,6 +104,7 @@ export default function Dashboard() {
 
           if (confirmComplete) {
             moveTaskToHistory(task);
+            toast("Task marked as completed");
           } else {
             hasTriggered.current = false;
           }
@@ -110,7 +112,7 @@ export default function Dashboard() {
           navigator.geolocation.clearWatch(watchId);
         }
       },
-      () => alert("Location permission denied"),
+      () => toast("Location permission denied"),
       { enableHighAccuracy: true },
     );
 
@@ -179,7 +181,10 @@ export default function Dashboard() {
 
             <br />
 
-            <button className="mark-btn" onClick={() => moveTaskToHistory(task)}>
+            <button className="mark-btn" onClick={() => {
+              moveTaskToHistory(task)
+              toast("Mark as Completed")
+              }}>
               Mark as Completed
             </button>
           </section>
