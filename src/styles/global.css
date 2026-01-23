@@ -121,15 +121,15 @@ body {
   font-size: 13px;
 }
 
-.mark-btn{
+.mark-btn {
   padding: 10px 16px;
-    border-radius: 8px;
-    border: 1px solid #e5e7eb;
-    background: #1677ff;
-    font-weight: 600;
-    cursor: pointer;
-    text-decoration: none;
-    color: #fff;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  background: #1677ff;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  color: #fff;
 }
 
 .input {
@@ -372,14 +372,14 @@ input:focus {
 }
 
 .status {
-     background: #e0ecff;
-    color: #2563eb;
-    padding: 6px 9px;
-    border-radius: 20px;
-    font-size: 14px;
-    height: 34px;
-    width: 148px;
-    font-weight: 600;
+  background: #e0ecff;
+  color: #2563eb;
+  padding: 6px 9px;
+  border-radius: 20px;
+  font-size: 14px;
+  height: 34px;
+  width: 148px;
+  font-weight: 600;
 }
 
 .distance-box {
@@ -547,12 +547,10 @@ input:focus {
   background: white;
 }
 
-
 /* =========================
    TABLET (max-width: 768px)
 ========================= */
 @media (max-width: 768px) {
-
   .navbar,
   .topbar {
     padding: 12px 16px;
@@ -589,12 +587,10 @@ input:focus {
   }
 }
 
-
 /* =========================
    MOBILE (max-width: 480px)
 ========================= */
 @media (max-width: 480px) {
-
   body {
     font-size: 14px;
   }
@@ -639,8 +635,6 @@ input:focus {
     gap: 10px;
   }
 
-
-
   .status {
     width: auto;
     text-align: center;
@@ -679,9 +673,8 @@ input:focus {
   }
 
   .add-btn {
-            width: 25%;
-        font-size: 12px;
-    
+    width: 25%;
+    font-size: 12px;
   }
 
   input {

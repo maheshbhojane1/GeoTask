@@ -57,13 +57,37 @@ export default function AddTask() {
           <p className="task-subtitle">Set a location trigger for your task</p>
 
           <form>
-            <label>Task Title</label>
+            <div style={{display:"flex"}}>
+              <label>Task Title</label><br />
             <input
               placeholder="Buy groceries"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
               required 
             />
+            <label>Task </label><br />
+            <input
+              placeholder="List of task"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              required 
+            />
+
+            </div>
+            {/* <label>Task Title</label>
+            <input
+              placeholder="Buy groceries"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              required 
+            />
+            <label>Task </label>
+            <input
+              placeholder="List of task"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              required 
+            /> */}
 
 
             <label>Trigger Distance</label>
