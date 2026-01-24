@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 
 export default function AddTask() {
   const [title, setTitle] = useState("");
+  const [item, setItems] = useState("");
   const [distance, setDistance] = useState(200);
   const [location, setLocation] = useState(null);
   const navigate = useNavigate();
@@ -57,7 +58,9 @@ export default function AddTask() {
           <p className="task-subtitle">Set a location trigger for your task</p>
 
           <form>
-            <div style={{display:"flex"}}>
+            <div style={{display:"flex", gap:"50px"}}>
+              <div style={{display:'flex', flexDirection:'column', width:"20%"}}> 
+
               <label>Task Title</label><br />
             <input
               placeholder="Buy groceries"
@@ -65,13 +68,17 @@ export default function AddTask() {
               onChange={(e) => setTitle(e.target.value)}
               required 
             />
+              </div>
+
+              <div style={{display:'flex', flexDirection:'column', width:"50%" }}>
+
             <label>Task </label><br />
             <input
               placeholder="List of task"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
+              onChange={(e) => setItems(e.target.value)}
               required 
             />
+              </div>
 
             </div>
             {/* <label>Task Title</label>
