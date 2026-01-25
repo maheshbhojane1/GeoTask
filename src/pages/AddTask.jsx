@@ -4,7 +4,7 @@ import { auth } from "../services/firebase";
 import { db } from "../services/firebase";
 import { doc, setDoc } from "firebase/firestore";
 import { Link } from "react-router-dom";
-
+import { toast } from "react-toastify";
 
 export default function AddTask() {
   const [title, setTitle] = useState("");
@@ -24,6 +24,7 @@ export default function AddTask() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    toast("Task Added Successfully")
 
     const user = auth.currentUser;
     if (!user || !location) return;
@@ -32,6 +33,7 @@ export default function AddTask() {
       title,
       distance,
       location,
+      item,
       createdAt: new Date(),
     });
 
@@ -57,50 +59,48 @@ export default function AddTask() {
           <h2>Add Task</h2>
           <p className="task-subtitle">Set a location trigger for your task</p>
 
-          <form>
-            <div style={{display:"flex", gap:"50px"}}>
-              <div style={{display:'flex', flexDirection:'column', width:"20%"}}> 
-
-              <label>Task Title</label><br />
-            <input
-              placeholder="Buy groceries"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-              required 
-            />
+          <form onSubmit={handleSubmit}>
+            <div style={{ display: "flex", gap: "50px" }}>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  width: "20%",
+                }}
+              >
+                <label>Task Title</label>
+                <br />
+                <input
+                  placeholder="Buy groceries"
+                  required
+                  onChange={(e) => setTitle(e.target.value)}
+                />
               </div>
 
-              <div style={{display:'flex', flexDirection:'column', width:"50%" }}>
-
-            <label>Task </label><br />
-            <input
-              placeholder="List of task"
-              onChange={(e) => setItems(e.target.value)}
-              required 
-            />
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  width: "50%",
+                }}
+              >
+                <label>Task </label>
+                <br />
+                <input
+                  placeholder="List of task"
+                  onChange={(e) => setItems(e.target.value)}
+                />
               </div>
-
             </div>
-            {/* <label>Task Title</label>
-            <input
-              placeholder="Buy groceries"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-              required 
-            />
-            <label>Task </label>
-            <input
-              placeholder="List of task"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-              required 
-            /> */}
-
 
             <label>Trigger Distance</label>
             <div class="input-group">
-              <input type="number"
-              onChange={(e) => setDistance(e.target.value)} placeholder="100" required/>
+              <input
+                type="number"
+                onChange={(e) => setDistance(e.target.value)}
+                placeholder="100"
+                required
+              />
               <span>meters</span>
             </div>
 
@@ -108,7 +108,7 @@ export default function AddTask() {
               <button type="button" class="btn location" onClick={getLocation}>
                 Location
               </button>
-              <button type="submit" class="btn primary" onClick={handleSubmit}>
+              <button type="submit" class="btn primary" >
                 Save Task
               </button>
             </div>

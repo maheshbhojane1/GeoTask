@@ -4,7 +4,7 @@ import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth, db } from "../services/firebase";
 import { useNavigate, Link } from "react-router-dom";
 import { doc, getDoc, deleteDoc, collection, addDoc } from "firebase/firestore";
-import { toast } from 'react-toastify';
+import { toast } from "react-toastify";
 
 export default function Dashboard() {
   const [task, setTask] = useState(null);
@@ -144,23 +144,22 @@ export default function Dashboard() {
       </header>
       <main className="dash-container">
         <section className="page-header">
-          <h1>Current Active Task</h1>
-            <Link className="add-btn" to="/add-task">
-              Add Task
-            </Link>
+          <h2>Current Active Task</h2>
+          <Link className="add-btn" to="/add-task">
+            Add Task
+          </Link>
         </section>
 
         {task ? (
-          
           <section className="task-card">
             <div className="task-top">
-            <div>
-              <span className="badge">TRACKING ACTIVE</span>
-              <h3>{task.title}</h3>
+              <div>
+                <span className="badge">TRACKING ACTIVE</span>
+                <h3>{task.title}</h3>
+              </div>
+              <span className="status">Active Monitoring</span>
             </div>
-            <span className="status">Active Monitoring</span>
-          </div>
-          <br />
+            <br />
             <div className="distance-box">
               <div>
                 <p>Trigger Distance</p>
@@ -181,12 +180,26 @@ export default function Dashboard() {
 
             <br />
 
-            <button className="mark-btn" onClick={() => {
-              moveTaskToHistory(task)
-              toast("Mark as Completed")
-              }}>
-              Mark as Completed
-            </button>
+            <div className="actions">
+              <button
+                className="mark-btn"
+                onClick={() => {
+                  moveTaskToHistory(task);
+                  toast("Mark as Completed");
+                }}
+              >
+                Mark as Completed
+              </button>
+              <button
+                className="mark-btn"
+                onClick={() => {
+                  moveTaskToHistory(task);
+                  toast("Mark as Completed");
+                }}
+              >
+                <Link to="/view-task">View Task</Link>
+              </button>
+            </div>
           </section>
         ) : (
           <p>No active task</p>
