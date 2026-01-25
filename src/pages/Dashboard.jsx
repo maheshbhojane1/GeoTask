@@ -182,7 +182,7 @@ export default function Dashboard() {
 
             <div className="actions">
               <button
-                className="mark-btn"
+                className="mark-btn btn"
                 onClick={() => {
                   moveTaskToHistory(task);
                   toast("Mark as Completed");
@@ -190,14 +190,12 @@ export default function Dashboard() {
               >
                 Mark as Completed
               </button>
+
+
               <button
-                className="mark-btn"
-                onClick={() => {
-                  moveTaskToHistory(task);
-                  toast("Mark as Completed");
-                }}
-              >
-                <Link to="/view-task">View Task</Link>
+                className="view-btn btn"
+                onClick={handleView}
+              >     View Task
               </button>
             </div>
           </section>

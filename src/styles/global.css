@@ -127,6 +127,18 @@ h2 {
 }
 
 .mark-btn {
+  flex: 1;
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  background: #1677ff;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  color: #fff;
+}
+.view-btn {
+  float: 2;
   padding: 10px 16px;
   border-radius: 8px;
   border: 1px solid #e5e7eb;
