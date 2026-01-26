@@ -24,10 +24,11 @@ export default function AddTask() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    toast("Task Added Successfully")
 
     const user = auth.currentUser;
     if (!user || !location) return;
+
+    toast("Task Added Successfully");
 
     await setDoc(doc(db, "tasks", user.uid), {
       title,
@@ -48,6 +49,9 @@ export default function AddTask() {
         <div className="user-menu">
           <Link className="btn" to="/dashboard">
             Dashboard
+          </Link>
+          <Link className="btn" to="/taskView">
+            View Task
           </Link>
           <Link className="btn" to="/history">
             History
@@ -108,7 +112,7 @@ export default function AddTask() {
               <button type="button" class="btn location" onClick={getLocation}>
                 Location
               </button>
-              <button type="submit" class="btn primary" >
+              <button type="submit" class="btn primary">
                 Save Task
               </button>
             </div>

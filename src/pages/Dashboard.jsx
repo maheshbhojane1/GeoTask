@@ -134,7 +134,6 @@ export default function Dashboard() {
             className="avatar"
             onClick={() => setShowMenu(!showMenu)}
           />
-
           {showMenu && (
             <div className="dropdown">
               <button onClick={handleLogout}>Logout</button>
@@ -191,11 +190,9 @@ export default function Dashboard() {
                 Mark as Completed
               </button>
 
-
-              <button
-                className="view-btn btn"
-                onClick={handleView}
-              >     View Task
+              <button className="view-btn btn" onClick={handleView}>
+                {" "}
+                View Task
               </button>
             </div>
           </section>

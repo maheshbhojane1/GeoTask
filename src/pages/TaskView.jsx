@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function TaskView() {
   return (
@@ -9,6 +10,9 @@ function TaskView() {
         <div className="user-menu">
           <Link className="btn" to="/dashboard">
             Dashboard
+          </Link>
+          <Link className="btn" to="/add-task">
+            Add Task
           </Link>
           <Link className="btn" to="/history">
             History

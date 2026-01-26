@@ -70,10 +70,25 @@ body {
 
 .login-logo {
   text-align: center;
-  /* position: relative;
-  bottom: 48px; */
 }
 
+.dropdown {
+  position: absolute;
+  right: 0;
+  top: 45px;
+  background: #1677ff;
+  border: 1px solid #ddd;
+  padding: 8px;
+  border-radius: 8px;
+}
+
+.dropdown button {
+  font-size: 15px;
+  font-weight: 500;
+  border: none;
+  background: transparent;
+  color: #fff;
+}
 .logo-icon {
   width: 56px;
   height: 56px;
@@ -220,7 +235,7 @@ input:focus {
   display: flex;
   align-items: center;
   gap: 8px;
-      width: 25%;
+  width: 25%;
 }
 
 .input-group span {
@@ -282,6 +297,7 @@ input:focus {
   font-weight: 600;
   cursor: pointer;
   border: none;
+  width: 104px;
 }
 
 .cancel {
@@ -385,7 +401,8 @@ input:focus {
 }
 
 .location {
-  color: #6b7280;
+  color: #fff;
+  background-color: #1677ff;
   margin-top: 4px;
 }
 
@@ -424,7 +441,6 @@ input:focus {
 }
 
 .history-container {
-  /* max-width: 1000px; */
   width: 500px;
   margin: 40px auto;
   padding: 0 20px;
@@ -532,7 +548,6 @@ h1 {
 .task-card {
   background: white;
   width: 100%;
-  /* max-width: 420px; */
   padding: 32px;
   border-radius: 14px;
   box-shadow: 0 14px 30px rgba(0, 0, 0, 0.08);
@@ -565,9 +580,7 @@ input:focus {
   background: white;
 }
 
-/* =========================
-   TABLET (max-width: 768px)
-========================= */
+
 @media (max-width: 768px) {
   .navbar,
   .topbar {
@@ -581,7 +594,6 @@ input:focus {
 
   .page-header {
     width: 100%;
-    /* flex-direction: column; */
     gap: 14px;
     align-items: center;
   }
@@ -591,7 +603,6 @@ input:focus {
   }
 
   .distance-box {
-    /* flex-direction: column; */
     gap: 12px;
     text-align: left;
   }
@@ -605,9 +616,7 @@ input:focus {
   }
 }
 
-/* =========================
-   MOBILE (max-width: 480px)
-========================= */
+
 @media (max-width: 480px) {
   body {
     font-size: 14px;
@@ -636,7 +645,6 @@ input:focus {
   }
 
   .navbar {
-    /* flex-direction: column; */
     gap: 12px;
   }
 
