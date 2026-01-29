@@ -28,7 +28,7 @@ export default function Login() {
         <div className="login-card">
           <h2 className="login-head">Welcome back</h2>
           <p className="subtitle">Sign in to continue to your dashboard</p>
-          <button className="btn" onClick={handleLogin}>
+          <button className="login-btn" onClick={handleLogin}>
             {" "}
             Sign in with Google{" "}
           </button>

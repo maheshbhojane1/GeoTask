@@ -190,8 +190,10 @@ export default function Dashboard() {
                 Mark as Completed
               </button>
 
-              <button className="view-btn btn" onClick={handleView}>
-                {" "}
+              <button className="view-btn btn" onClick={() => {
+                navigate("/taskView")
+              }}>
+                {""}
                 View Task
               </button>
             </div>

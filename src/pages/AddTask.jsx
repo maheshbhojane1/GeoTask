@@ -91,7 +91,7 @@ export default function AddTask() {
                 <label>Task </label>
                 <br />
                 <input
-                  placeholder="List of task"
+                  placeholder="Task Description / List"
                   onChange={(e) => setItems(e.target.value)}
                 />
               </div>
