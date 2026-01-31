@@ -48,16 +48,18 @@ export default function History() {
     <>
       <header className="navbar">
         <div className="logo">GeoTask</div>
-        <Link className="historyAdd-btn" to="/add-task">
-              Add Task
-            </Link>
+        <div className="dash-user-menu">
+          <Link className="nav-btn" to="/add-task">
+            Add Task
+          </Link>
+        </div>
       </header>
       <div style={{ width: "100%", display: "flex", justifyContent: "center" }}>
         <div className="history-container">
           <div className="history-header">
             <h1>Task History</h1>
 
-            <Link className="back-btn" to="/dashboard">
+            <Link className="container-btn" to="/dashboard">
               Back
             </Link>
           </div>

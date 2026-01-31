@@ -22,6 +22,15 @@ export default function AddTask() {
     });
   };
 
+  const distanceChange = (e) => {
+    const val = e.target.value;
+    if (val < 100) {
+      setDistance(100);
+    } else {
+      setDistance(val);
+    } 
+
+  };
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -46,14 +55,14 @@ export default function AddTask() {
       <header className="navbar">
         <div className="logo">GeoTask</div>
 
-        <div className="user-menu">
-          <Link className="btn" to="/dashboard">
+        <div className="dash-user-menu">
+          <Link className="nav-btn" to="/dashboard">
             Dashboard
           </Link>
-          <Link className="btn" to="/taskView">
+          <Link className="nav-btn" to="/taskView">
             View Task
           </Link>
-          <Link className="btn" to="/history">
+          <Link className="nav-btn" to="/history">
             History
           </Link>
         </div>
@@ -90,7 +99,8 @@ export default function AddTask() {
               >
                 <label>Task </label>
                 <br />
-                <input
+                <textarea
+                  className="description-input"
                   placeholder="Task Description / List"
                   onChange={(e) => setItems(e.target.value)}
                 />
@@ -101,18 +111,20 @@ export default function AddTask() {
             <div class="input-group">
               <input
                 type="number"
-                onChange={(e) => setDistance(e.target.value)}
+                onChange={distanceChange}
                 placeholder="100"
+                // value={distance}
+                min={100}
                 required
               />
               <span>meters</span>
             </div>
 
             <div class="actions">
-              <button type="button" class="btn location" onClick={getLocation}>
+              <button type="button" class="location" onClick={getLocation}>
                 Location
               </button>
-              <button type="submit" class="btn primary">
+              <button type="submit" class="primary">
                 Save Task
               </button>
             </div>

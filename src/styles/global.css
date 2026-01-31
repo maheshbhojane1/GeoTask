@@ -47,10 +47,15 @@ body {
   padding: 0 20px;
   text-align: center;
 }
-.container {
+.login-container {
   max-width: 1100px;
   margin: 40px auto;
   padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 44px;
 }
 
 .task-card {
@@ -134,6 +139,17 @@ h2 {
 .login-head {
   margin-bottom: 8px;
 }
+
+.login-btn {
+  border: none;
+  font-size: 15px;
+  font-weight: 300;
+  width: 200px;
+  height: 35px;
+  background: #1677ff;
+  border-radius: 6px;
+  color: #fff;
+}
 .subtitle {
   text-align: center;
   color: #64748b;
@@ -142,10 +158,10 @@ h2 {
 }
 
 .mark-btn {
-  flex: 1;
-  padding: 10px 16px;
+  width: 206px;
+  height: 50px;
+  padding: 11px 16px;
   border-radius: 8px;
-  border: 1px solid #e5e7eb;
   background: #1677ff;
   font-weight: 600;
   cursor: pointer;
@@ -153,10 +169,10 @@ h2 {
   color: #fff;
 }
 .view-btn {
-  float: 2;
-  padding: 10px 16px;
+  width: 206px;
+  height: 50px;
+  padding: 11px 16px;
   border-radius: 8px;
-  border: 1px solid #e5e7eb;
   background: #1677ff;
   font-weight: 600;
   cursor: pointer;
@@ -288,6 +304,7 @@ input:focus {
   display: flex;
   gap: 12px;
   margin-top: 26px;
+  justify-content: space-between;
 }
 
 .btn {
@@ -329,13 +346,13 @@ input:focus {
   color: #0f172a;
 }
 
-.user-menu {
+.dash-user-menu {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 24px;
 }
 
-.user-menu a {
+.dash-user-menu a {
   margin: 0 14px;
   text-decoration: none;
   color: #000;
@@ -369,7 +386,8 @@ input:focus {
 }
 
 .add-btn {
-  padding: 10px 16px;
+  height: 50px;
+  padding: 11px 16px;
   border-radius: 8px;
   border: 1px solid #e5e7eb;
   background: #1677ff;
@@ -403,7 +421,6 @@ input:focus {
 .location {
   color: #fff;
   background-color: #1677ff;
-  /* margin-top: 4px; */
 }
 
 .status {
@@ -538,6 +555,12 @@ h1 {
   text-decoration: none;
 }
 
+.delete:hover {
+  background: #1677ff;
+  color: #fff;
+}
+
+
 .task-container {
   display: flex;
   justify-content: center;
@@ -547,7 +570,7 @@ h1 {
 
 .task-card {
   background: white;
-  width: 100%;
+  width: 60%;
   padding: 32px;
   border-radius: 14px;
   box-shadow: 0 14px 30px rgba(0, 0, 0, 0.08);
@@ -570,13 +593,21 @@ input {
   width: 100%;
   padding: 12px;
   border-radius: 8px;
-  border: 1px solid #e5e7eb;
+  border: 1px solid #000;
+  background: #f8fafc;
+}
+.description-input {
+  width: 100%;
+  height: 50px;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #000;
   background: #f8fafc;
 }
 
 input:focus {
   outline: none;
-  border-color: #1677ff;
+  border-color: #000;
   background: white;
 }
 
@@ -630,7 +661,6 @@ input:focus {
 .task-list-item {
   background: #f1f5f9;
   padding: 12px;
-  /* border-radius: var(--radius-md); */
   display: flex;
   gap: 12px;
 }
@@ -655,10 +685,31 @@ input:focus {
   gap: 12px;
 }
 
-.btn {
-  height: 40px;
-  padding: 0 20px;
-  cursor: pointer;
+
+.location {
+      width: 206px;
+    height: 50px;
+    padding: 11px 16px;
+    border-radius: 8px;
+    background: #1677ff;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    color: #fff;
+    border: none;
+}
+
+.primary {
+      width: 206px;
+    height: 50px;
+    padding: 11px 16px;
+    border-radius: 8px;
+    background: #1677ff;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    color: #fff;
+    border: none;
 }
 
 .back {
@@ -669,6 +720,7 @@ input:focus {
   cursor: pointer;
   text-decoration: none;
   color: #fff;
+  border: none;
 }
 
 .task-add {
@@ -742,6 +794,7 @@ input:focus {
     cursor: pointer;
     border: none;
     width: 200px;
+    cursor: pointer;
   }
 
   .logo h1 {

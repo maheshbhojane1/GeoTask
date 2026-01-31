@@ -1,7 +1,6 @@
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { auth } from "../services/firebase";
 import { useNavigate } from "react-router-dom";
-// import logo from "../assets/logo.sv";
 import icon from "../assets/icon.png";
 
 export default function Login() {
@@ -18,7 +17,7 @@ export default function Login() {
   };
   return (
     <>
-      <div className="container">
+      <div className="login-container">
         <div className="loginlogo">
           <div className="logo-icon">
             <img style={{width:"34px"}} src={icon} alt="Logo" />

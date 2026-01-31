@@ -36,14 +36,14 @@ export default function TaskView() {
       <header className="navbar">
         <div className="logo">GeoTask</div>
 
-        <div className="user-menu">
-          <Link className="btn" to="/dashboard">
+        <div className="dash-user-menu">
+          <Link className="nav-btn" to="/dashboard">
             Dashboard
           </Link>
-          <Link className="btn" to="/add-task">
+          <Link className="nav-btn" to="/add-task">
             Add Task
           </Link>
-          <Link className="btn" to="/history">
+          <Link className="nav-btn" to="/history">
             History
           </Link>
         </div>

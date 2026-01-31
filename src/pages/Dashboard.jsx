@@ -124,26 +124,28 @@ export default function Dashboard() {
       <header className="navbar">
         <div className="logo">GeoTask</div>
 
-        <div className="user-menu">
-          <Link className="btn" to="/history">
+        <div className="dash-user-menu">
+          <Link className="nav-btn" to="/history">
             History
           </Link>
-          <img
-            src={auth.currentUser?.photoURL || "/user.png"}
-            alt="User"
-            className="avatar"
-            onClick={() => setShowMenu(!showMenu)}
-          />
-          {showMenu && (
-            <div className="dropdown">
-              <button onClick={handleLogout}>Logout</button>
-            </div>
-          )}
+          <div>
+            <img
+              src={auth.currentUser?.photoURL || "/user.png"}
+              alt="User"
+              className="avatar"
+              onClick={() => setShowMenu(!showMenu)}
+            />
+            {showMenu && (
+              <div className="dropdown">
+                <button onClick={handleLogout}>Logout</button>
+              </div>
+            )}
+          </div>
         </div>
       </header>
       <main className="dash-container">
         <section className="page-header">
-          <h2>Current Active Task</h2>
+          <h2>Active Task</h2>
           <Link className="add-btn" to="/add-task">
             Add Task
           </Link>
@@ -180,22 +182,25 @@ export default function Dashboard() {
             <br />
 
             <div className="actions">
-              <button
-                className="mark-btn btn"
+              <a
+                className="mark-btn"
                 onClick={() => {
                   moveTaskToHistory(task);
                   toast("Mark as Completed");
                 }}
               >
                 Mark as Completed
-              </button>
+              </a>
 
-              <button className="view-btn btn" onClick={() => {
-                navigate("/taskView")
-              }}>
+              <a
+                className="view-btn"
+                onClick={() => {
+                  navigate("/taskView");
+                }}
+              >
                 {""}
                 View Task
-              </button>
+              </a>
             </div>
           </section>
         ) : (
